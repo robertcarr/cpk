@@ -10,6 +10,5 @@ module Cpk
 
 a = extract("s3")
 puts a.inspect
-
 end
 

@@ -8,4 +8,4 @@ require 'cpk/parse.rb'
 require 'cpk/credentials.rb'
 require 'cpk/deployments.rb'
 require 'cpk/ssh.rb'
-
+require 'cpk/s3.rb'
