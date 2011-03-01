@@ -6,8 +6,15 @@ module Cpk
 @password = 'l@ss3ndr1v3'
 @session = GoogleSpreadsheet.login(@username, @password)
 @worksheet = @session.spreadsheet_by_key("tY3KyQ3heFR8_pLCIDa5mxA").worksheets[0]
+@debug = false
 
-build("deployments")
+#build("deployments")
 
+
+create_deployments(extract("deployments"))
+create_ssh(extract("ssh"))
+create_securitygroups(extract("securitygroup"))
+create_credentials(extract("credentials"))
+create_s3(extract("s3"))
 end
 
