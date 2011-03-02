@@ -9,8 +9,6 @@ module Cpk
 @debug = false
 
 #build("deployments")
-
-
 create_deployments(extract("deployments"))
 create_ssh(extract("ssh"))
 create_securitygroups(extract("securitygroup"))
