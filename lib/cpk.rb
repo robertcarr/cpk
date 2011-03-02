@@ -12,7 +12,8 @@ module Cpk
 
 
 
-create_arrays(extract("arrays"))
+serverinputs(extract("server inputs"))
+
 exit
 Deployment.create(d)
 exit

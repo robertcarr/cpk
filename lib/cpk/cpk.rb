@@ -17,3 +17,5 @@ require 'cpk/servers.rb'
 require 'cpk/resolveuri.rb'
 require 'cpk/deploymentinputs.rb'
 require 'cpk/arrays.rb'
+require 'cpk/serverinputs.rb'
+
