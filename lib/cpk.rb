@@ -7,7 +7,7 @@ module Cpk
 @session = GoogleSpreadsheet.login(@username, @password)
 @worksheet = @session.spreadsheet_by_key("tY3KyQ3heFR8_pLCIDa5mxA").worksheets[0]
 @debug = debug?
-@debug = true
+@debug = false
 
 puts account?
 puts @debug
