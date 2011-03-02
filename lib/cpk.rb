@@ -10,9 +10,7 @@ module Cpk
 @debug = false
 
 
-d= extract("deployments")
-puts d[0]['description'].dump
-
+deploymentinputs(extract("Deployment settings"))
 exit
 Deployment.create(d)
 exit

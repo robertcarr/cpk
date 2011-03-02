@@ -15,3 +15,5 @@ require 'cpk/config.rb'
 require 'cpk/eip.rb'
 require 'cpk/servers.rb'
 require 'cpk/resolveuri.rb'
+require 'cpk/deploymentinputs.rb'
+
