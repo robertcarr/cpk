@@ -10,7 +10,7 @@ module Cpk
 @debug = false
 
 
-deploymentinputs(extract("Deployment settings"))
+create_arrays(extract("arrays"))
 exit
 Deployment.create(d)
 exit
