@@ -12,7 +12,7 @@ module Cpk
 
 
 
-serverinputs(extract("server inputs"))
+create_elb(extract("elb"))
 
 exit
 Deployment.create(d)
