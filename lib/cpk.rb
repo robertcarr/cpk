@@ -9,11 +9,12 @@ module Cpk
 @debug = debug?
 @debug = false
 
-puts account?
-puts @debug
 
+d= extract("deployments")
+puts d[0]['description'].dump
 
-create_servers(extract("servers"))
+exit
+Deployment.create(d)
 exit
 #build("deployments")
 create_deployments(extract("deployments"))
