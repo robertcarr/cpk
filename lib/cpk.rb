@@ -7,12 +7,13 @@ module Cpk
 @session = GoogleSpreadsheet.login(@username, @password)
 @worksheet = @session.spreadsheet_by_key("tY3KyQ3heFR8_pLCIDa5mxA").worksheets[0]
 @debug = debug?
-@debug = false
+@debug = true
 
 puts account?
 puts @debug
 
-create_eips(extract("eip"))
+
+create_servers(extract("servers"))
 exit
 #build("deployments")
 create_deployments(extract("deployments"))
