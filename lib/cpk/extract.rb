@@ -7,7 +7,7 @@ row_array = Array.new
 		if @worksheet[row,1].downcase == group.downcase
 			offset = 1
 			headers = @worksheet.rows[row] # Defaults to non-zero array
-				until ( @worksheet.rows[row + offset][0].empty? )
+				until ( @worksheet.rows[row + offset][0].empty? || @worksheet.rows[row + offset][0].match(/^ +/) )
 				row_hash = Hash.new
 					row_data =  @worksheet.rows[row+offset]
 					headers.each_index do |x|
