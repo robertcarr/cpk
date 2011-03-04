@@ -2,7 +2,6 @@
 module Cpk
 def self.extract(group)
 row_array = Array.new
-
 	for row in 1..@worksheet.num_rows
 		if @worksheet[row,1].downcase == group.downcase
 			offset = 1

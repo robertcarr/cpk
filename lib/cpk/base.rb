@@ -1,18 +1,25 @@
 module Cpk
-	def	self.set_account(username, password, account)
-		RightScale::Api::BaseExtend.class_eval <<-EOF
-			@@connection.settings = {
-				:user					=> username,
-				:pass					=> password,
-				:api_url			=> "https://my.rightscale.com/api/acct/#{account}",
-				:common_headers => {
-						"X_API_VERSION" => "1.0"
-				}
-			}
-		EOF
+
+	def self.uri?(href)
+	return true if href.match(/^http/)
 	end
+	
+	def	self.deployment_href_by_name(deployment)
+		dep = Deployment.find(:all).select { |x| x.nickname.match(deployment) } 
+		dep[0]['href']
+	end
+
+	def self.template_href_by_name(name, version)
+		puts name, version
+		st = ServerTemplate.find(:first) { |x| x.nickname =~ /#{name}/i && x.version == version.to_i }
+		puts st.inspect if @debug
+		st['href']
+	end
+
+	def self.security_group_href_by_name(name)
+		sg = Ec2SecurityGroup.find(:first) { |x| x.aws_group_name =~ /#{name}/ }
+		sg['href']
+	end
+
 end
-
-
-
 
