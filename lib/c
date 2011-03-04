@@ -1,0 +1,47 @@
+#!/usr/bin/ruby
+
+require 'optparse'
+require 'cpk/cpk.rb'
+require 'pp'
+
+module Cpk
+
+@options = {}
+def self.readopts
+	optparse = OptionParser.new	do |opts|
+		opts.banner = "Usage: cpk [options] <google key>"
+			@options[:debug] = false
+		opts.on('-d','--debug','Debug mode/dry-run') do 
+			@options[:debug] = true
+		end
+			@options[:show] = nil
+		opts.on('-s','--show ACTION','Show data for ACTION in worksheet') do |action|
+			@options[:show] = action
+		end
+		opts.on('-a','--action ACTION','Run single action') do |action|
+			@options[:action] = action
+		end
+		opts.on('-h','--help','Display this screen') do	
+			puts opts
+			exit
+		end
+	end
+	optparse.parse!
+end
+
+@username = 'robert@rightscale.com'
+@password = 'l@ss3ndr1v3'
+@google_key = 'tY3KyQ3heFR8_pLCIDa5mxA'
+@session = GoogleSpreadsheet.login(@username, @password)
+@worksheet = @session.spreadsheet_by_key(@google_key).worksheets[0]
+
+readopts
+pp self.extract @options[:show] if @options[:show]
+
+actions = %w{ ssh securitygroups credentials deployments s3 servers deploymentinputs serverinputs }
+
+if actions.include?(@options[:action]) 
+	data =	Cpk.send :extract, @options[:action]
+	Cpk.send "create_#{@options[:action]}", data
+end
+end
