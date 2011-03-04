@@ -21,5 +21,12 @@ module Cpk
 		sg['href']
 	end
 
+	def self.array_id_by_name(name)
+		puts "Looking for array #{name}" if @debug
+		array = Ec2ServerArray.find(:first) { |x| x.nickname =~ /#{name}/ }
+		id = array.href[/\d+$/]
+		puts "Found Array with ID=#{id}" if @debug
+		id.to_i
+	end
 end
 
