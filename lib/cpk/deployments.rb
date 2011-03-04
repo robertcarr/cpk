@@ -1,7 +1,6 @@
 # TODO: FIX deployment['description'] to not double escape \n
 module Cpk
 	def self.create_deployments(deps)
-	puts "go"
 		deps.each do |dep|
 			if @options[:destroy]
 				d = Deployment.find(:first) { |x| x.nickname =~ /#{dep['nickname']}/ }
