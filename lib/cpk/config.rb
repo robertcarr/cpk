@@ -7,7 +7,7 @@ module Cpk
 
 def self.readopts
 optparse = OptionParser.new	do |opts|
-opts.banner = "Usage: cpk [options] [<spreadsheet key>]"
+opts.banner = "Usage: cpk [options]"
 
 # TODO: Finish error checking options
 @options[:debug] = false
@@ -15,11 +15,11 @@ opts.on('-x','--debug','Debug mode/dry-run') do
 @options[:debug] = true
 end
 @options[:show] = nil
-opts.on('-s','--show SECTION','Show data for SECTION in worksheet') do |section|
+opts.on('-s','--show SECTION','Show data for a SECTION in worksheet') do |section|
 @options[:show] = section
 end
 @options[:destroy] = nil
-opts.on('-d', '--destroy SECTION', 'Destroy (delete) an section') do |section|
+opts.on('-d', '--destroy SECTION', 'Destroy (delete) a section') do |section|
 @options[:destroy] = section
 end
 @options[:create] = nil
@@ -34,6 +34,11 @@ end
 opts.on("-k", "--key KEY", "Spreadsheet KEY overrides config") do |key|
 @options[:key] = key
 end
+@options[:worksheet] = nil
+opts.on("-w", "--worksheet SHEET", "Specify worksheet to use ## TODO ##") do |worksheet|
+@options[:worksheet] = worksheet
+end
+
 opts.on('-h','--help','Display this screen') do	
 puts opts
 exit
@@ -44,6 +49,7 @@ end
 
 readopts
 
+# TODO: Add support for muliple "tabs" in spreadsheet
 @config = JSON::parse(IO.read("../config.json"))
 @username = @config['username']
 @password = @config['password']
