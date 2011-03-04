@@ -9,6 +9,7 @@ def self.readopts
 optparse = OptionParser.new	do |opts|
 opts.banner = "Usage: cpk [options] [<spreadsheet key>]"
 
+# TODO: Finish error checking options
 @options[:debug] = false
 opts.on('-x','--debug','Debug mode/dry-run') do 
 @options[:debug] = true
@@ -46,19 +47,11 @@ readopts
 @config = JSON::parse(IO.read("../config.json"))
 @username = @config['username']
 @password = @config['password']
-@google_key = @config['key'] ||= @options[:key]
+@google_key = @options[:key] ||= @config['key']
 @session = GoogleSpreadsheet.login(@username, @password)
 @worksheet = @session.spreadsheet_by_key(@google_key).worksheets[0]
 
 @debug = @options[:debug]
 
-
-	def self.account?
-		@worksheet[4,2]
-	end
-		
-	def self.debug?
-		@debug = @worksheet[5,2] || "False"
-	end
 end
 
