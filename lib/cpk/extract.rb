@@ -10,13 +10,13 @@ row_array = Array.new
 				row_hash = Hash.new
 # Allow user to specify exact spreadsheet row to extract
 				@options[:line] ? row_data = @worksheet.rows[@options[:line].to_i - 1] : row_data = @worksheet.rows[row+offset]
-				puts row_data.inspect
+				puts row_data.inspect if @debug
 					headers.each_index do |x|
 						row_hash[headers[x].downcase] = row_data[x] unless  (headers[x].empty? || row_data[x] == "" || row_data[x] =~ /^ / )
 					end
 					row_array  << row_hash
 					offset += 1
-					exit if @options[:line]
+					break if @options[:line]
 				end 
 		end
 	end
