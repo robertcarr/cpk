@@ -1,5 +1,5 @@
 module Cpk
-	def self.deploymentinputs(inputs)
+	def self.create_deploymentinputs(inputs)
 		inputs.each do |input|
 			d = Deployment.find(:all).select { |x| x.nickname.match(input['deployment']) }
 			puts d.inspect

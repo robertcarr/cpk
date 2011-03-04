@@ -1,5 +1,5 @@
 module Cpk
-	def	self.serverinputs(servers)
+	def	self.create_serverinputs(servers)
 #TODO: FIX THE Interation names too confusing
 		servers.each do |specific_server|
 			d = Deployment.find(:first) { |x| x.nickname.match(specific_server['deployment']) }
