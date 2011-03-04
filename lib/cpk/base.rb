@@ -10,7 +10,7 @@ module Cpk
 	end
 
 	def self.template_href_by_name(name, version)
-		puts name, version
+		puts "Retrieving href for template #{name} Version #{version}" if @debug
 		st = ServerTemplate.find(:first) { |x| x.nickname =~ /#{name}/i && x.version == version.to_i }
 		puts st.inspect if @debug
 		st['href']
