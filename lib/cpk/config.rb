@@ -50,7 +50,7 @@ end
 readopts
 
 # TODO: Add support for muliple "tabs" in spreadsheet
-@config = JSON::parse(IO.read("../config.json"))
+@config = JSON::parse(IO.read("/root/.cpk/cpk-config"))
 @username = @config['username']
 @password = @config['password']
 @google_key = @options[:key] ||= @config['key']
