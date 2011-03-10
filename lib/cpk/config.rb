@@ -56,7 +56,6 @@ readopts
 @google_key = @options[:key] ||= @config['key']
 @session = GoogleSpreadsheet.login(@username, @password)
 @worksheet = @session.spreadsheet_by_key(@google_key).worksheets[0]
-
 @debug = @options[:debug]
 
 end
