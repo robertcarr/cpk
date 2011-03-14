@@ -38,6 +38,20 @@ end
 opts.on("-w", "--worksheet SHEET", "Specify worksheet to use ## TODO ##") do |worksheet|
 @options[:worksheet] = worksheet
 end
+@options[:username] = nil
+opts.on("-u", "--user USER", "Google docs user name") do |user|
+@options[:username] = user
+end
+@options[:password] = nil
+opts.on("-p", "--password PASSWORD", "Google docs password") do |password|
+@options[:password] = password
+end
+@options[:pdf] = nil
+opts.on("-f","--pdf", "Create PDF of configuration") do
+@options[:pdf] = true
+end
+
+
 
 opts.on('-h','--help','Display this screen') do	
 puts opts
